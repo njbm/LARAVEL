@@ -1,19 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-</head>
-
-<body>
-    <h1> This is home page. </h1>
-</body>
-
-</html> -->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,17 +24,17 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:8000/about">About Us</a>
+                        <a class="nav-link" href="{{ url('/about') }}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:8000/contact">Contact Us</a>
+                        <a class="nav-link" href="{{ url('/contact') }}">Contact Us</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Product
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="http://127.0.0.1:8000/product">Product List</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/product') }}">Product List</a></li>
                             <li><a class="dropdown-item" href="http://127.0.0.1:8000/category">Product Categories </a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -59,7 +43,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="http://127.0.0.1:8000/service">Services</a>
+                        <a class="nav-link" href="{{ url('/service') }}">Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="http://127.0.0.1:8000/cart">Cart</a>
@@ -80,6 +64,11 @@
             </div>
         </div>
     </nav>
+
+    <div>
+
+    @include('frontend.partials.slider');
+    </div>
 </body>
 
 </html>

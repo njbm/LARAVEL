@@ -8,7 +8,7 @@ class AboutController extends Controller
 {
     public function About()
     {
-        return view('demo.about');
+        return view('frontend.about');
     }
 
 }

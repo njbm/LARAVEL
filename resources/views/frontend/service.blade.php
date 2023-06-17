@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.front-master')
 
 @section('header')
 <div class="container">
