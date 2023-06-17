@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/aboutt', 'AboutController@About');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -55,4 +58,8 @@ Route::get('/cart', function () {
 
 Route::get('/offer', function () {
     return view('demo/offer');
+});
+
+Route::get('/comp', function () {
+    return view('demo/comp');
 });
