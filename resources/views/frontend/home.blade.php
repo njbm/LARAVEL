@@ -66,9 +66,9 @@
     </nav>
 
     <div>
-
     @include('frontend.partials.slider');
     </div>
+    @include('frontend.partials.footer');
 </body>
 
 </html>
