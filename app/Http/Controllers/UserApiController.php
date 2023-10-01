@@ -7,6 +7,7 @@ use App\Models\User;
 
 class UserApiController extends Controller
 {
+    //Get Api for Show User
     public function showUser($id=null){
         if($id==''){
             $users=User::get();
@@ -17,6 +18,7 @@ class UserApiController extends Controller
             return response()->json(['users'=>$users],200);
         }
     }
+    //Post Api for add User
     public function addUser(Request $request){
         if($request->ismethod('post')){
             $data = $request->all();
@@ -50,7 +52,7 @@ class UserApiController extends Controller
             return response()->json(['message'=>$message], 201);
         }
     }
-
+    //Post Api for add Multiple User
     public function addMultipleUser(Request $request){
         if($request->ismethod('post')){
             $data = $request->all();
@@ -130,6 +132,22 @@ class UserApiController extends Controller
             $message = 'User Updated Successfully'; 
             return response()->json(['message'=>$message], 202);
         }
+    }
+    //Delete Api for delete User
+    public function deleteUser($id=null){
+        User::findOrFail($id)->delete();
+        $message = 'User Deleted Successfully'; 
+        return response()->json(['message'=>$message], 200);
+    }
+    //Delete Api with JSON
+    public function deleteUserJson(Request $jaber){
+        if($jaber->isMethod('delete')){
+            $data= $jaber->all();
+            User::where(['id', $data['id']]);
+            $message = 'User Deleted Successfully with JSON'; 
+            return response()->json(['message'=>$message], 200);
+        }
+
     }
 
 
