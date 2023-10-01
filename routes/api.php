@@ -26,3 +26,7 @@ Route::post('/add-user', [UserApiController::class, 'addUser']);
 Route::post('/add-m-user', [UserApiController::class, 'addMultipleUser']);
 //Put Api for Update user
 Route::put('/update-user/{id}', [UserApiController::class, 'updateUser']);
+//Patch Api for Update user
+Route::patch('/update-s-record/{id}', [UserApiController::class, 'updateSingleRecord']);
+//Delete Api for Delete user
+Route::delete('/delete-user/{id}', [UserApiController::class, 'deleteUser']);

@@ -84,7 +84,6 @@ class UserApiController extends Controller
         }
     }
 
-
     //Put Api for update user
     public function updateUser(Request $request, $id){
         if($request->ismethod('put')){
@@ -102,10 +101,31 @@ class UserApiController extends Controller
             if($validate->fails()){
                 return response()->json($validate->errors(), 422);
             }
-
             $user = User::findOrFail($id);
             $user->name = $data['name'];
             $user->password = bcrypt($data['password']);
+            $user->save();
+            $message = 'User Updated Successfully'; 
+            return response()->json(['message'=>$message], 202);
+        }
+    }
+    //Patch Api for update Single Record
+    public function updateSingleRecord(Request $request, $id){
+        if($request->ismethod('patch')){
+            $data = $request->all();
+            $rules=[
+                'name'=>'required',
+            ];  
+            $flushMessage=[
+                'name.required'=>'Name field is Required',
+            ];
+            $validate =Validator::make($data, $rules, $flushMessage);
+
+            if($validate->fails()){
+                return response()->json($validate->errors(), 422);
+            }
+            $user = User::findOrFail($id);
+            $user->name = $data['name'];
             $user->save();
             $message = 'User Updated Successfully'; 
             return response()->json(['message'=>$message], 202);
