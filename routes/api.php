@@ -18,7 +18,9 @@ use App\Http\Controllers\UserApiController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//Get Api for show user
 Route::get('/users/{id?}', [UserApiController::class, 'showUser']);
-
+//Post Api for add single user
 Route::post('/add-user', [UserApiController::class, 'addUser']);
+//Post Api for add multiple user
+Route::post('/add-m-user', [UserApiController::class, 'addMultipleUser']);
