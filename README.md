@@ -5,12 +5,25 @@ This project is created by "Jaber Masud". To know about him, Search on google by
 
 ## Project setup
 ```
-composer update
+composer install
 ```
 
-### Set up  the Database from env
+### Environment Configuration:
+Set Database name & orhers configuration from the .env file & create database.
+
+### Generate a new application key:
+```
+php artisan key:generate
+```
+
+### Set up the Database
 ```
 php artisan migrate
+```
+
+### If you want to populate the database with seed data (optional), you can run:
+```
+php artisan db:seed
 ```
 
 ### Optimize Project
@@ -23,11 +36,14 @@ php artisan optimize:clear
 php artisan serve
 ```
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+By default, the application will be accessible at http://localhost:8000.
 
 ### If you are facing any problem then contact with me..
 ```
 Jaber Masud
 ```
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
