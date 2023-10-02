@@ -1,7 +1,7 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 # Laravel Application For Restful API Sample
-<h3> This project is created by "Jaber Masud". To know about him, Search on google by "Jaber Masud" or "masud9900" </h3>
+<h3 style="color:lightgreen;"> This project is created by "Jaber Masud". To know about him, Search on google by :->  "Jaber Masud" or "masud9900" </h3>
 
 ## Project setup
 ```
