@@ -156,12 +156,26 @@ class UserApiController extends Controller
         return response()->json(['message'=>$message], 200);
     }
     public function deleteMUserJson(Request $jaber){
-        if($jaber->isMethod('delete')){
-            $data= $jaber->all();
-            User::whereIn('id', $data['ids'])->delete();
-            $message = 'Multiple User Deleted Successfully with JSON'; 
-            return response()->json(['message'=>$message], 200);
+        $header = $jaber->header('Authorization');
+        if($header==''){
+            $message = 'Authorization is Required'; 
+            return response()->json(['message'=>$message], 422);
         }
+        else{
+            if ($header=='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb2RlIjoiOTkwMCIsIm5hbWUiOiJKYWJlciBNYXN1ZCIsInRpdGxlIjoiQmh1aXlhbiJ9.ZK5ST-b9Y4YoHurqhlu8EIMpsuhzDLgMViY_WTm7KXo') {
+                if($jaber->isMethod('delete')){
+                    $data= $jaber->all();
+                    User::whereIn('id', $data['ids'])->delete();
+                    $message = 'Users Deleted Successfully with JSON'; 
+                    return response()->json(['message'=>$message], 200);
+                } 
+            }
+            else{
+                $message = 'Authorization Does Not Match'; 
+                return response()->json(['message'=>$message], 422);
+            }
+        }
+        
     }
 
 
