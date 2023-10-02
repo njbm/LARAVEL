@@ -48,3 +48,6 @@ Route::delete('/delete-m-user-json', [UserApiController::class, 'deleteMUserJson
 
 //Register User Using Passport Api
 Route::post('register-u-passport', [UserApiController::class, 'userPassportApi'] );
+
+//Login User Using Passport Api
+Route::post('login-u-passport', [UserApiController::class, 'userPassportApiLog'] );

@@ -222,6 +222,41 @@ class UserApiController extends Controller
             return response()->json(['message'=>$message], 422);
         }
     }
+    public function userPassportApiLog(Request $request){
+        if($request->ismethod('post')){
+            $data = $request->all();
+
+            $rules=[
+                'email'=>'required|email|exists:users',
+                'password'=>'required',
+            ];  
+
+            $flushMessage=[
+                'email.required'=>'Email field is Required',
+                'email.email'=>'Email must be a Valid email',
+                'email.exists' => 'Email Does Not Exists',
+                'password.required'=>'Password field is Required',
+            ];
+
+            $validate =Validator::make($data, $rules, $flushMessage);
+
+            if($validate->fails()){
+                return response()->json($validate->errors(), 422);
+            }
+
+            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+                $user = User::where('email',$data['email'])->first();
+                $access_token = $user->createToken($data['email'])->accessToken;
+                User::where('email', $data['email'])->update(['access_token'=> $access_token]);
+            }
+            $message = 'User Login Successfull';
+            return response()->json(['message'=>$message, 'access_token'=> $access_token], 201);
+        }
+        else{
+            $message = 'Invalid email or password';
+            return response()->json(['message'=>$message], 422);
+        }
+    }
 
 
 
