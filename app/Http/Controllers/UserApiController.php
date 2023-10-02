@@ -140,14 +140,28 @@ class UserApiController extends Controller
         return response()->json(['message'=>$message], 200);
     }
     //Delete Api with JSON
-    public function deleteUserJson(Request $jaber){
-        if($jaber->isMethod('delete')){
-            $data= $jaber->all();
-            User::where(['id', $data['id']]);
+    public function deleteUserJson(Request $request){
+        if($request->isMethod('delete')){
+            $data= $request->all();
+            User::where('id', $data['id'])->delete();
             $message = 'User Deleted Successfully with JSON'; 
             return response()->json(['message'=>$message], 200);
         }
 
+    }
+    public function deleteMUser($ids){
+        $ids = explode(',',$ids);
+        User::whereIn('id',$ids)->delete();
+        $message = 'Multiple User Deleted Successfully'; 
+        return response()->json(['message'=>$message], 200);
+    }
+    public function deleteMUserJson(Request $jaber){
+        if($jaber->isMethod('delete')){
+            $data= $jaber->all();
+            User::whereIn('id', $data['ids'])->delete();
+            $message = 'Multiple User Deleted Successfully with JSON'; 
+            return response()->json(['message'=>$message], 200);
+        }
     }
 
 
