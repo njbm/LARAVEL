@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 
 class UserApiController extends Controller
 {
@@ -176,6 +177,50 @@ class UserApiController extends Controller
             }
         }
         
+    }
+
+    public function userPassportApi(Request $request){
+        if($request->ismethod('post')){
+            $data = $request->all();
+
+            $rules=[
+                'name'=>'required',
+                'email'=>'required|email|unique:users',
+                'password'=>'required',
+            ];  
+
+            $flushMessage=[
+                'name.required'=>'Name field is Required',
+                'email.required'=>'Email field is Required',
+                'email.email'=>'Email must be a Valid email',
+                'email.unique' => 'Email is already in use',
+                'password.required'=>'Password field is Required',
+            ];
+
+            $validate =Validator::make($data, $rules, $flushMessage);
+
+            if($validate->fails()){
+                return response()->json($validate->errors(), 422);
+            }
+
+            $user = new User();
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password = bcrypt($data['password']);
+            $user->save();
+
+            if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']])){
+                $user = User::where('email',$data['email'])->first();
+                $access_token = $user->createToken($data['email'])->accessToken;
+                User::where('email', $data['email'])->update(['access_token'=> $access_token]);
+            }
+            $message = 'User Registerd Successfully';
+            return response()->json(['message'=>$message, 'access_token'=> $access_token], 201);
+        }
+        else{
+            $message = 'Opps..!!! Something went Wrong';
+            return response()->json(['message'=>$message], 422);
+        }
     }
 
 
