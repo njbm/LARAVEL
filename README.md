@@ -1,11 +1,7 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 # Laravel Application For Restful API Sample
-<<<<<<< HEAD
 <p style="color:red;"> This project is created by "Jaber Masud". To know about him, Search on google by :  <a href="https://jaber.netlify.app"> "Jaber Masud"</a> or <a href="https://goo.by/WfVSqx">"masud9900"</a> </p>
-=======
-<p style="color:red;"> This project is created by "<a href="https://jaber.netlify.app">Jaber Masud</a>". To know about him, Search on google by :  "<a href="https://jaber.netlify.app">Jaber Masud</a>" or "masud9900" </p>
->>>>>>> 66026665964a485bd46115fc6f652cf6b0aa2283
 
 
 ## Project setup
