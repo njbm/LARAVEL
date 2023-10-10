@@ -1,7 +1,7 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 # Laravel Application For Restful API Sample
-<p style="color:red;"> This project is created by "Jaber Masud". To know about him, Search on google by :  <a href="https://jaber.netlify.app"> "Jaber Masud"</a> or "masud9900" </p>
+<p style="color:red;"> This project is created by "Jaber Masud". To know about him, Search on google by :  <a href="https://jaber.netlify.app"> "Jaber Masud"</a> or <a href="https://goo.by/WfVSqx">"masud9900"</a> </p>
 
 
 ## Project setup
@@ -10,7 +10,11 @@ composer install
 ```
 
 ### Environment Configuration:
-Set Database name & orhers configuration from the .env file & create database.
+```
+Set Database name & orhers configuration from the ".env" file & create database. If don't have ".env" file. Copy the ".env.example" file to a new file named ".env"
+
+cp .env.example .env
+```
 
 ### Generate a new application key:
 ```
